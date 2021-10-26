@@ -263,3 +263,43 @@ src/App.vue<HelloWorld msg="Welcome to Your Vue.js App"/>
 src/components/HelloWorld.vue
 
 - 
+
+
+
+
+## v-bind (중요)
+
+
+
+
+
+## v-model(two-way-binding)의 응용
+- checkbox를 만들어서 그 checkbox의 값에 따라서 다른 image를 보여준다.
+- checkbox의 속성에 v-model="flag" 설정한다.
+
+```html
+</ul>
+  Nmae: <input type="text" v-model="name"/>        
+<ul>
+```
+- v-modle은 양방향
+
+
+
+
+## MVVM 모델
+
+- 문제점 : Javascript에서 컨트롤러 혹은 프리젠터 역할까지 하면서 코드의 분량이 증가하는 단점이 있었다 (ViewModel이 없는 아키텍처)
+- ViewModel에 자바스크립트 객체와 DOM을 연결해 주면 ViewModel은 이 둘간의 동기화를 자동으로 처리한다.(re-Randering, 다시그리기)
+- 이것이 Vuejs가 하는 역할이다. 즉, MVVM 모델의 VM을 Vue.js가 동기화처리를 담당, 양방향 동기화이기 때문에 modelview - viewmodel
+  - modelview : HTML DOM이 View 역할
+  - viewmodel : Javascript가 Model 역할
+- 과거에 제이쿼리같은데서는 자바스크립트 코드로 엄청~ 많이 고생해서 해냈다
+
+### 어떻게 양뱡향 동기화를 실현할까?? : VirtualDOM
+- 한줄요약 : 기존에는 업데이트 되든말든 화면전체를 랜더링했는데 >> virtualDOM에다가 버퍼링을 해두고 바뀐 부분만 빠르게 슥삭 다시실제 DOM에다가 적용
+- 동작
+  1. 변화가 일어났다. 변화된 버전을 Virtual DOM으로 바꾸자 :: 데이터가 업데이트 되면 전체 UI를 가상돔에 Re렌더링한다.
+  2. Virtual DOM 끼리 비교하자 :: 변화 전의 virtual dom 과 변화된 virtual dom 을 비교한다.
+  3. 비교하여 바뀐 부분만 적용하자 :: 바뀐 부분만 실제 DOM에 적용을 함으로서 레이아웃 계산은 한 번만 이행된다
+
