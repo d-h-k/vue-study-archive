@@ -303,3 +303,18 @@ src/components/HelloWorld.vue
   2. Virtual DOM 끼리 비교하자 :: 변화 전의 virtual dom 과 변화된 virtual dom 을 비교한다.
   3. 비교하여 바뀐 부분만 적용하자 :: 바뀐 부분만 실제 DOM에 적용을 함으로서 레이아웃 계산은 한 번만 이행된다
 
+
+## MV 와 VM 이 데이터를 공유하는 
+
+```
+       [APP]
+         |
+  ---------------
+  |             |
+HW             MyDir 
+
+```
+- HW에서이벤트를 Emit(통지) 
+- APP에서 받고
+- APP에서 내려주고
+- M

@@ -24,10 +24,13 @@
     <img :src="flag ? chita : anglogo" width="200" />
     <!--- 삼항연산자의 사용 --->
 
+
+
+  <!--- 에러메시지 : [vue/require-v-for-key] : 여기 왜 안나오는지 모르겠습니다.. --->
+
     <ul>
-      <li v-for="(todo, idx) in todos" :key="idx">
-        <!--- 에러메시지 : [vue/require-v-for-key] : Elements in iteration expect to have 'v-bind:key' directives. --->
-        {{ todo }} {{ todo.text }}
+      <li v-for="todo in todos" :key="todo.id">
+        {{ todo.text }}
       </li>
 
       <!---  또다른 가능함 
@@ -55,7 +58,9 @@
 </template>
 <script>
 export default {
-  propss: ["title"], //부모(컴포넌트)로부터 물려받은 데이터들을 나타내는
+
+  props: ["title","todos"], //부모(컴포넌트)로부터 물려받은 데이터들을 나타내는
+  
   data() {
     //내 자신 내안의 컴포넌트에서 사용하는 변수
     return {
@@ -68,21 +73,16 @@ export default {
       chita:
         "https://w.namu.la/s/5fb1c943e0e910af237aed00dc23781cf177f421bebad7c0212d0d67f206f1bb6cbd4ba5427a7053095180ef783d4b60301e5a973b5bbd09e3213fb31715877cb4574d3a86565bc7a3d875e5104422ed7a6630c5e68932d6f50219505344df40",
       anglogo: "https://angular.io/assets/images/logos/angular/angular.svg",
-      todos: [
-        { id: 1, text: "Vue.js 튜토리얼 작성하기" },
-        { 1234: "Webpack2 알아보기" },
-        { text: "사이드 프로젝트 진행하기" },
-      ],
+      
       flag: true,
     };
   },
   methods: {
-    increment: function () {
+    increment () {
       //사용자 정의 함수, 이벤트 핸들러임
       this.value++;
     },
-    decrement:function ()  {
-        //
+    decrement()  {
         this.value--;
     },
   }, //methods

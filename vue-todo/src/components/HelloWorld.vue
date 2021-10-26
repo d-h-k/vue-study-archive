@@ -1,15 +1,34 @@
 <template>
   <div class="hello">
     <h1>{{ msgValue }}</h1>
+
+    Name : <input type="text" v-model="todo" />
+    <button @click="addTodo">    추가</button>
+
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msgValue: String
-  }
+  props: ["msgValue"],
+  data() {
+    return {
+      todo: '',
+    }
+  },
+  methods: {
+    addTodo() {
+      // Click 이벤트가 발생했음을 APP의 부모컴포넌트에 통지하기(알려주기)
+
+
+      //this.$emit("addEvent", this.todo); // 이벤트의 이름은 addEvent, 콜백함수는 
+        console.log("test todo func called");
+
+    },
+
+  },
+  
 }
 </script>
 
