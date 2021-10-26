@@ -46,7 +46,8 @@
     <div>
         Value = {{value}} <br>
         <button v-on:click="increment" 증가></button>
-        <button v-on:click="decrement" 감소></button>
+        <button @click="decrement" 감소></button>
+        <!---  "v-on:" 을 압축&&생략해서 "@" 문자로 대체 가능 --->
     </div>
 
 
